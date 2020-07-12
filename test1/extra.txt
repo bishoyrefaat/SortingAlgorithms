@@ -1,0 +1,36 @@
+public void sort(int arr[],int a , int b)
+    {
+        if(a<b){
+        int m= (a+b)/2;
+       sort(arr,a,m);
+       sort(arr,m+1,b);
+       merge(arr,a,m,b);
+
+        } }
+
+
+    public void merge(int arr[],int a ,int m, int b)
+    {
+        int temp[] = new int [b+1];
+        int f1=a,f2=m+1,i=a;
+        while((f1<=m)&&(f2<=b)) {
+
+            if (arr[f1] < arr[f2]) {
+                temp[i] = arr[f1];
+                f1++;
+            }else{
+                temp[i]=arr[f2];
+                ++f2;
+            }
+            i++;
+            }
+
+        for (;f1 <= m; ++f1, ++i)
+            temp[i] = arr[f1];
+        for (;f2 <= b; ++f2, ++i)
+            temp[i] = arr[f2];
+
+        for(int j=a;j<=b;++j)
+            arr[j]=temp[j];
+
+    }
